@@ -1,26 +1,118 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-deep-ocean: #0C2340;
+  --color-midnight-blue: #163B5C;
+  --color-tropical-teal: #2A9D8F;
+  --color-sun-gold: #E9C46A;
+  --color-coral-accent: #E76F51;
+  --color-sand-light: #F8F6F0;
+  --color-sand-medium: #EDE8E0;
+  --color-drift-gray: #8B8680;
+  --color-shell-white: #FEFCF9;
+  --font-display: var(--font-playfair-display);
+  --font-body: var(--font-dm-sans);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-sand-light);
+  color: var(--color-deep-ocean);
+  font-family: var(--font-body), sans-serif;
+}
+
+/* Subtle noise overlay for premium feel */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Gold section divider */
+.section-divider {
+  height: 1px;
+  background-color: var(--color-sun-gold);
+  opacity: 0.3;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Floating label styles */
+.floating-label-group {
+  position: relative;
+}
+.floating-label-group input,
+.floating-label-group textarea {
+  border: none;
+  border-bottom: 2px solid var(--color-sand-medium);
+  background: transparent;
+  padding: 1.5rem 0 0.5rem;
+  width: 100%;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+  outline: none;
+}
+.floating-label-group input:focus,
+.floating-label-group textarea:focus {
+  border-bottom-color: var(--color-tropical-teal);
+}
+.floating-label-group label {
+  position: absolute;
+  top: 1.5rem;
+  left: 0;
+  font-size: 1rem;
+  color: var(--color-drift-gray);
+  transition: all 0.3s;
+  pointer-events: none;
+}
+.floating-label-group input:focus ~ label,
+.floating-label-group input:not(:placeholder-shown) ~ label,
+.floating-label-group textarea:focus ~ label,
+.floating-label-group textarea:not(:placeholder-shown) ~ label {
+  top: 0;
+  font-size: 0.75rem;
+  color: var(--color-tropical-teal);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-sand-light);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-drift-gray);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-midnight-blue);
+}
+
+/* Skeleton pulse animation */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Responsive improvements */
+@media (max-width: 640px) {
+  .floating-label-group input,
+  .floating-label-group textarea {
+    font-size: 16px; /* Prevent iOS zoom */
+  }
+}
+
+/* Hide select arrow for custom styling */
+select.appearance-none::-ms-expand {
+  display: none;
 }
