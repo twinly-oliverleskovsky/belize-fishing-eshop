@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Fish, MapPin, Phone, Mail } from "lucide-react";
+import { MapPin, Phone, Mail } from "lucide-react";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -8,8 +9,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <Fish className="text-tropical-teal" size={24} strokeWidth={1.5} />
+            <div className="flex items-center gap-3 mb-4">
+              <Image
+                src="/logo.svg"
+                alt="Belize Fishing Logo"
+                width={40}
+                height={20}
+                className="brightness-0 invert"
+              />
               <span className="font-display text-xl font-bold">Belize Fishing</span>
             </div>
             <p className="text-white/60 text-sm leading-relaxed font-body">
@@ -27,6 +34,7 @@ export default function Footer() {
               {[
                 { href: "/", label: "Home" },
                 { href: "/shop", label: "Shop" },
+                { href: "/blog", label: "Blog" },
                 { href: "/#about", label: "About Us" },
                 { href: "/#contact", label: "Contact" },
               ].map((link) => (

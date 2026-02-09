@@ -22,7 +22,7 @@ export default function AboutSection() {
                 className="absolute inset-0 bg-cover bg-center"
                 style={{
                   backgroundImage:
-                    "url('https://images.unsplash.com/photo-1440557653082-e9c440333768?w=1200&q=80')",
+                    "url('https://images.unsplash.com/photo-1619054976487-7198b8924922?w=1200&q=80')",
                 }}
               />
               <div className="absolute inset-0 bg-deep-ocean/20" />

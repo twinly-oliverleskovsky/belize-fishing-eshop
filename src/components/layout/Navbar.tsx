@@ -3,13 +3,15 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ShoppingBag, Menu, X, Fish } from "lucide-react";
+import { ShoppingBag, Menu, X } from "lucide-react";
+import Image from "next/image";
 import { useCartStore } from "@/store/cartStore";
 import { useUIStore } from "@/store/uiStore";
 
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/shop", label: "Shop" },
+  { href: "/blog", label: "Blog" },
   { href: "/#about", label: "About" },
   { href: "/#contact", label: "Contact" },
 ];
@@ -41,11 +43,13 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 group">
-              <Fish
-                className="text-tropical-teal transition-transform duration-300 group-hover:rotate-12"
-                size={28}
-                strokeWidth={1.5}
+            <Link href="/" className="flex items-center gap-3 group">
+              <Image
+                src="/logo.svg"
+                alt="Belize Fishing Logo"
+                width={44}
+                height={22}
+                className="brightness-0 invert transition-transform duration-300 group-hover:scale-110"
               />
               <span className="font-display text-xl font-bold text-white tracking-tight">
                 Belize Fishing

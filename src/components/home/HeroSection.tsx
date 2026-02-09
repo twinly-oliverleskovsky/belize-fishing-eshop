@@ -18,7 +18,7 @@ export default function HeroSection() {
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage:
-              "url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1920&q=80')",
+              "url('https://images.unsplash.com/photo-1666461468421-d20a489594e1?w=1920&q=80')",
           }}
         />
       </motion.div>

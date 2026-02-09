@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 60" fill="none">
+  <!-- Boat -->
+  <path d="M20 42 Q25 50 60 50 Q95 50 100 42 L90 42 Q85 46 60 46 Q35 46 30 42 Z" fill="#0D7377"/>
+  <!-- Water line -->
+  <path d="M10 48 Q30 44 50 48 Q70 52 90 48 Q110 44 120 48" stroke="#0D7377" stroke-width="1.5" fill="none" opacity="0.5"/>
+  <path d="M5 52 Q25 48 45 52 Q65 56 85 52 Q105 48 115 52" stroke="#0D7377" stroke-width="1" fill="none" opacity="0.3"/>
+  <!-- Fisherman body -->
+  <circle cx="55" cy="22" r="5" fill="#0D7377"/>
+  <path d="M55 27 L55 38" stroke="#0D7377" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M55 30 L48 36" stroke="#0D7377" stroke-width="2" stroke-linecap="round"/>
+  <!-- Fishing rod -->
+  <path d="M55 30 L80 12" stroke="#0D7377" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Fishing line -->
+  <path d="M80 12 Q82 20 78 30 Q76 36 78 42" stroke="#0D7377" stroke-width="0.8" fill="none" stroke-dasharray="2 1"/>
+  <!-- Legs -->
+  <path d="M55 38 L50 44" stroke="#0D7377" stroke-width="2" stroke-linecap="round"/>
+  <path d="M55 38 L60 44" stroke="#0D7377" stroke-width="2" stroke-linecap="round"/>
+</svg>

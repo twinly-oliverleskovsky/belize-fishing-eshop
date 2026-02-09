@@ -16,7 +16,7 @@ export default function CategoryBanner() {
               className="absolute inset-0 bg-cover bg-center"
               style={{
                 backgroundImage:
-                  "url('https://images.unsplash.com/photo-1545816250-e12bedcab7be?w=1600&q=80')",
+                  "url('https://images.unsplash.com/photo-1625183656263-171183307b15?w=1600&q=80')",
               }}
             />
             <div className="absolute inset-0 bg-gradient-to-r from-deep-ocean/90 via-deep-ocean/60 to-transparent" />
