@@ -7,6 +7,7 @@ import { ShoppingBag, Menu, X } from "lucide-react";
 import Image from "next/image";
 import { useCartStore } from "@/store/cartStore";
 import { useUIStore } from "@/store/uiStore";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -70,6 +71,7 @@ export default function Navbar() {
                 ))}
               </div>
 
+              <ThemeToggle />
               <button
                 data-cart-icon
                 onClick={openCartDrawer}

@@ -7,7 +7,6 @@ import ToastContainer from "@/components/ui/Toast";
 import CartDrawer from "@/components/cart/CartDrawer";
 import CookieConsent from "@/components/ui/CookieConsent";
 import FlyToCartAnimation from "@/components/ui/FlyToCartAnimation";
-import ThemePrompt from "@/components/ui/ThemePrompt";
 
 export default function ClientLayout({ children }: { children: ReactNode }) {
   return (
@@ -19,7 +18,6 @@ export default function ClientLayout({ children }: { children: ReactNode }) {
       <ToastContainer />
       <FlyToCartAnimation />
       <CookieConsent />
-      <ThemePrompt />
     </>
   );
 }

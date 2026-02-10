@@ -23,9 +23,7 @@ interface UIStore {
 
   // Theme
   theme: Theme;
-  themeConfirmed: boolean;
   toggleTheme: () => void;
-  confirmTheme: () => void;
   initTheme: () => void;
 }
 
@@ -47,28 +45,20 @@ export const useUIStore = create<UIStore>((set, get) => ({
 
   // Theme
   theme: "light",
-  themeConfirmed: false,
   toggleTheme: () => {
     const next = get().theme === "light" ? "dark" : "light";
     set({ theme: next });
     if (typeof window !== "undefined") {
       document.documentElement.classList.toggle("dark", next === "dark");
-    }
-  },
-  confirmTheme: () => {
-    set({ themeConfirmed: true });
-    if (typeof window !== "undefined") {
-      localStorage.setItem("belize-fishing-theme", get().theme);
-      localStorage.setItem("belize-fishing-theme-confirmed", "true");
+      localStorage.setItem("belize-fishing-theme", next);
     }
   },
   initTheme: () => {
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem("belize-fishing-theme") as Theme | null;
-      const confirmed = localStorage.getItem("belize-fishing-theme-confirmed") === "true";
       const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
       const theme = saved ?? (prefersDark ? "dark" : "light");
-      set({ theme, themeConfirmed: confirmed });
+      set({ theme });
       document.documentElement.classList.toggle("dark", theme === "dark");
     }
   },
