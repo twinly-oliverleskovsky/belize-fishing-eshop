@@ -77,10 +77,10 @@ export default function CheckoutClient() {
               size={64}
               strokeWidth={1}
             />
-            <h2 className="font-display text-2xl text-deep-ocean mb-4">
+            <h2 className="font-display text-2xl text-deep-ocean dark:text-dark-text mb-4">
               Your cart is empty
             </h2>
-            <p className="text-drift-gray font-body mb-8">
+            <p className="text-drift-gray dark:text-dark-text-secondary font-body mb-8">
               Add some items to your cart before proceeding to checkout.
             </p>
             <Link href="/shop">
@@ -111,15 +111,15 @@ export default function CheckoutClient() {
               >
                 <Check className="text-white" size={36} strokeWidth={2} />
               </motion.div>
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-deep-ocean mb-4">
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-deep-ocean dark:text-dark-text mb-4">
                 Thank You for Your Order!
               </h2>
-              <p className="text-drift-gray font-body text-lg mb-2">
-                Order <span className="font-semibold text-deep-ocean">#BF-001</span>
+              <p className="text-drift-gray dark:text-dark-text-secondary font-body text-lg mb-2">
+                Order <span className="font-semibold text-deep-ocean dark:text-dark-text">#BF-001</span>
               </p>
-              <p className="text-drift-gray font-body mb-8">
+              <p className="text-drift-gray dark:text-dark-text-secondary font-body mb-8">
                 We&apos;ll contact you shortly at{" "}
-                <span className="text-deep-ocean font-medium">{form.phone || "your number"}</span>{" "}
+                <span className="text-deep-ocean dark:text-dark-text font-medium">{form.phone || "your number"}</span>{" "}
                 to arrange delivery and payment details.
               </p>
               <Link href="/shop">
@@ -134,7 +134,7 @@ export default function CheckoutClient() {
               exit={{ opacity: 0 }}
             >
               <AnimatedSection>
-                <h1 className="font-display text-4xl md:text-5xl font-bold text-deep-ocean tracking-tight mb-12">
+                <h1 className="font-display text-4xl md:text-5xl font-bold text-deep-ocean dark:text-dark-text tracking-tight mb-12">
                   Checkout
                 </h1>
               </AnimatedSection>
@@ -143,10 +143,10 @@ export default function CheckoutClient() {
                 {/* Form */}
                 <div className="lg:col-span-3">
                   <AnimatedSection>
-                    <h2 className="font-display text-2xl font-semibold text-deep-ocean mb-2">
+                    <h2 className="font-display text-2xl font-semibold text-deep-ocean dark:text-dark-text mb-2">
                       Complete Your Order
                     </h2>
-                    <p className="text-drift-gray font-body mb-10">
+                    <p className="text-drift-gray dark:text-dark-text-secondary font-body mb-10">
                       Fill in your details and we&apos;ll contact you to arrange
                       delivery and payment
                     </p>
@@ -161,7 +161,7 @@ export default function CheckoutClient() {
                             value={form.name}
                             onChange={handleChange}
                             placeholder=" "
-                            className={`font-body text-deep-ocean ${errors.name ? "!border-b-coral-accent" : ""}`}
+                            className={`font-body text-deep-ocean dark:text-dark-text ${errors.name ? "!border-b-coral-accent" : ""}`}
                           />
                           <label className={errors.name ? "!text-coral-accent" : ""}>Full Name *</label>
                         </div>
@@ -179,7 +179,7 @@ export default function CheckoutClient() {
                             value={form.email}
                             onChange={handleChange}
                             placeholder=" "
-                            className={`font-body text-deep-ocean ${errors.email ? "!border-b-coral-accent" : ""}`}
+                            className={`font-body text-deep-ocean dark:text-dark-text ${errors.email ? "!border-b-coral-accent" : ""}`}
                           />
                           <label className={errors.email ? "!text-coral-accent" : ""}>Email Address *</label>
                         </div>
@@ -197,7 +197,7 @@ export default function CheckoutClient() {
                             value={form.phone}
                             onChange={handleChange}
                             placeholder=" "
-                            className={`font-body text-deep-ocean ${errors.phone ? "!border-b-coral-accent" : ""}`}
+                            className={`font-body text-deep-ocean dark:text-dark-text ${errors.phone ? "!border-b-coral-accent" : ""}`}
                           />
                           <label className={errors.phone ? "!text-coral-accent" : ""}>Phone Number *</label>
                         </div>
@@ -215,7 +215,7 @@ export default function CheckoutClient() {
                             onChange={handleChange}
                             placeholder=" "
                             rows={3}
-                            className="font-body text-deep-ocean resize-none"
+                            className="font-body text-deep-ocean dark:text-dark-text resize-none"
                           />
                           <label>Delivery Address</label>
                         </div>
@@ -230,7 +230,7 @@ export default function CheckoutClient() {
                             onChange={handleChange}
                             placeholder=" "
                             rows={3}
-                            className="font-body text-deep-ocean resize-none"
+                            className="font-body text-deep-ocean dark:text-dark-text resize-none"
                           />
                           <label>Order Notes (optional)</label>
                         </div>
@@ -246,15 +246,15 @@ export default function CheckoutClient() {
                 {/* Order Summary */}
                 <div className="lg:col-span-2">
                   <AnimatedSection delay={0.2}>
-                    <div className="bg-sand-medium rounded-2xl p-6 lg:p-8 sticky top-28">
-                      <h3 className="font-body text-lg font-semibold text-deep-ocean uppercase tracking-wider mb-6">
+                    <div className="bg-sand-medium dark:bg-dark-card rounded-2xl p-6 lg:p-8 sticky top-28">
+                      <h3 className="font-body text-lg font-semibold text-deep-ocean dark:text-dark-text uppercase tracking-wider mb-6">
                         Order Summary
                       </h3>
 
                       <div className="space-y-4 mb-6">
                         {items.map((item) => (
                           <div key={item.id} className="flex items-center gap-3">
-                            <div className="relative w-12 h-12 rounded-lg overflow-hidden bg-shell-white shrink-0">
+                            <div className="relative w-12 h-12 rounded-lg overflow-hidden bg-shell-white dark:bg-dark-border shrink-0">
                               <Image
                                 src={item.image}
                                 alt={item.name}
@@ -264,14 +264,14 @@ export default function CheckoutClient() {
                               />
                             </div>
                             <div className="flex-1 min-w-0">
-                              <p className="font-body text-sm font-medium text-deep-ocean truncate">
+                              <p className="font-body text-sm font-medium text-deep-ocean dark:text-dark-text truncate">
                                 {item.name}
                               </p>
-                              <p className="text-drift-gray text-xs font-body">
+                              <p className="text-drift-gray dark:text-dark-text-secondary text-xs font-body">
                                 Qty: {item.quantity}
                               </p>
                             </div>
-                            <p className="font-body text-sm font-bold text-deep-ocean">
+                            <p className="font-body text-sm font-bold text-deep-ocean dark:text-dark-text">
                               {formatPrice(item.price * item.quantity)}
                             </p>
                           </div>
@@ -280,7 +280,7 @@ export default function CheckoutClient() {
 
                       <div className="border-t border-sun-gold/30 pt-4">
                         <div className="flex justify-between">
-                          <span className="font-body font-semibold text-deep-ocean text-lg">
+                          <span className="font-body font-semibold text-deep-ocean dark:text-dark-text text-lg">
                             Total
                           </span>
                           <span className="font-body font-bold text-sun-gold text-xl">

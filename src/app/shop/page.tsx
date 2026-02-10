@@ -13,10 +13,10 @@ export default function ShopPage() {
     <main className="pt-28 pb-24 lg:pb-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <AnimatedSection className="text-center mb-12">
-          <h1 className="font-display text-4xl md:text-5xl font-bold text-deep-ocean tracking-tight mb-4">
+          <h1 className="font-display text-4xl md:text-5xl font-bold text-deep-ocean dark:text-dark-text tracking-tight mb-4">
             Our Collection
           </h1>
-          <p className="text-drift-gray font-body text-lg max-w-lg mx-auto">
+          <p className="text-drift-gray dark:text-dark-text-secondary font-body text-lg max-w-lg mx-auto">
             Everything you need for Caribbean waters
           </p>
         </AnimatedSection>

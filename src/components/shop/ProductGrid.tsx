@@ -102,8 +102,8 @@ export default function ProductGrid() {
       {/* Product Grid */}
       {visibleProducts.length === 0 ? (
         <div className="text-center py-20">
-          <p className="font-display text-2xl text-deep-ocean mb-2">No products found</p>
-          <p className="text-drift-gray font-body">
+          <p className="font-display text-2xl text-deep-ocean dark:text-dark-text mb-2">No products found</p>
+          <p className="text-drift-gray dark:text-dark-text-secondary font-body">
             Try adjusting your search or filter criteria
           </p>
         </div>

@@ -27,9 +27,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('belize-fishing-theme');
+                  if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    document.documentElement.classList.add('dark');
+                  }
+                } catch(e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
       <body
-        className={`${playfairDisplay.variable} ${dmSans.variable} antialiased`}
+        className={`${playfairDisplay.variable} ${dmSans.variable} antialiased bg-sand-light dark:bg-dark-bg text-deep-ocean dark:text-dark-text transition-colors duration-300`}
       >
         <ClientLayout>{children}</ClientLayout>
       </body>

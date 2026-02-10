@@ -7,6 +7,7 @@ import { ShoppingBag, Menu, X } from "lucide-react";
 import Image from "next/image";
 import { useCartStore } from "@/store/cartStore";
 import { useUIStore } from "@/store/uiStore";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -36,7 +37,7 @@ export default function Navbar() {
         transition={{ duration: 0.5 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-deep-ocean/95 backdrop-blur-md shadow-lg"
+            ? "bg-deep-ocean/95 dark:bg-dark-surface/95 backdrop-blur-md shadow-lg"
             : "bg-transparent"
         }`}
       >
@@ -70,6 +71,7 @@ export default function Navbar() {
                 ))}
               </div>
 
+              <ThemeToggle />
               <button
                 data-cart-icon
                 onClick={openCartDrawer}

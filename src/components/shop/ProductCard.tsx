@@ -59,10 +59,10 @@ export default function ProductCard({ product }: ProductCardProps) {
       <motion.div
         whileHover={{ y: -4 }}
         transition={{ duration: 0.3 }}
-        className="group bg-shell-white border border-sand-medium rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.1)] transition-shadow duration-300"
+        className="group bg-shell-white dark:bg-dark-card border border-sand-medium dark:border-dark-border rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.1)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.2)] dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.3)] transition-shadow duration-300"
       >
         {/* Image */}
-        <div className="relative aspect-[4/5] overflow-hidden bg-sand-medium">
+        <div className="relative aspect-[4/5] overflow-hidden bg-sand-medium dark:bg-dark-border">
           <Image
             src={product.image}
             alt={product.name}
@@ -91,10 +91,10 @@ export default function ProductCard({ product }: ProductCardProps) {
 
         {/* Info */}
         <div className="p-5">
-          <p className="text-drift-gray text-xs font-body uppercase tracking-widest mb-1">
+          <p className="text-drift-gray dark:text-dark-text-secondary text-xs font-body uppercase tracking-widest mb-1">
             {product.category}
           </p>
-          <h3 className="font-body text-base font-semibold text-deep-ocean mb-1.5 line-clamp-1">
+          <h3 className="font-body text-base font-semibold text-deep-ocean dark:text-dark-text mb-1.5 line-clamp-1">
             {product.name}
           </h3>
           <div className="mb-2">

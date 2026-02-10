@@ -10,14 +10,32 @@
   --color-sand-medium: #EDE8E0;
   --color-drift-gray: #8B8680;
   --color-shell-white: #FEFCF9;
+
+  /* Dark mode colors */
+  --color-dark-bg: #0f1419;
+  --color-dark-surface: #1a2332;
+  --color-dark-card: #1e2a3a;
+  --color-dark-border: #2a3a4e;
+  --color-dark-text: #e4e8ed;
+  --color-dark-text-secondary: #8899aa;
+
   --font-display: var(--font-playfair-display);
   --font-body: var(--font-dm-sans);
 }
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 body {
   background-color: var(--color-sand-light);
   color: var(--color-deep-ocean);
   font-family: var(--font-body), sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark body,
+body:where(.dark *) {
+  background-color: var(--color-dark-bg);
+  color: var(--color-dark-text);
 }
 
 /* Subtle noise overlay for premium feel */
@@ -80,12 +98,25 @@ body::before {
   color: var(--color-tropical-teal);
 }
 
+/* Floating label dark mode */
+.dark .floating-label-group input,
+.dark .floating-label-group textarea {
+  border-bottom-color: var(--color-dark-border);
+  color: var(--color-dark-text);
+}
+.dark .floating-label-group label {
+  color: var(--color-dark-text-secondary);
+}
+
 /* Scrollbar styling */
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
   background: var(--color-sand-light);
+}
+.dark ::-webkit-scrollbar-track {
+  background: var(--color-dark-bg);
 }
 ::-webkit-scrollbar-thumb {
   background: var(--color-drift-gray);

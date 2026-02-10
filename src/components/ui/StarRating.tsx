@@ -45,12 +45,12 @@ export default function StarRating({
         })}
       </div>
       {showValue && (
-        <span className="text-sm font-body font-semibold text-deep-ocean">
+        <span className="text-sm font-body font-semibold text-deep-ocean dark:text-dark-text">
           {rating.toFixed(1)}
         </span>
       )}
       {reviewCount !== undefined && (
-        <span className="text-sm font-body text-drift-gray">
+        <span className="text-sm font-body text-drift-gray dark:text-dark-text-secondary">
           ({reviewCount})
         </span>
       )}

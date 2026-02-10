@@ -15,9 +15,9 @@ export default function CartItemRow({ item }: CartItemProps) {
   const removeItem = useCartStore((s) => s.removeItem);
 
   return (
-    <div className="flex items-center gap-4 py-6 border-b border-sand-medium">
+    <div className="flex items-center gap-4 py-6 border-b border-sand-medium dark:border-dark-border">
       {/* Image */}
-      <div className="relative w-20 h-20 rounded-lg overflow-hidden bg-sand-medium shrink-0">
+      <div className="relative w-20 h-20 rounded-lg overflow-hidden bg-sand-medium dark:bg-dark-border shrink-0">
         <Image
           src={item.image}
           alt={item.name}
@@ -29,7 +29,7 @@ export default function CartItemRow({ item }: CartItemProps) {
 
       {/* Info */}
       <div className="flex-1 min-w-0">
-        <h3 className="font-body font-semibold text-deep-ocean text-sm md:text-base truncate">
+        <h3 className="font-body font-semibold text-deep-ocean dark:text-dark-text text-sm md:text-base truncate">
           {item.name}
         </h3>
         <p className="text-sun-gold font-body font-bold text-sm mt-1">
@@ -38,7 +38,7 @@ export default function CartItemRow({ item }: CartItemProps) {
       </div>
 
       {/* Quantity */}
-      <div className="flex items-center border border-sand-medium rounded-lg">
+      <div className="flex items-center border border-sand-medium dark:border-dark-border rounded-lg">
         <button
           onClick={() => updateQuantity(item.id, item.quantity - 1)}
           className="w-8 h-8 flex items-center justify-center text-drift-gray hover:text-deep-ocean transition-colors cursor-pointer"
@@ -46,7 +46,7 @@ export default function CartItemRow({ item }: CartItemProps) {
         >
           <Minus size={14} strokeWidth={1.5} />
         </button>
-        <span className="w-8 text-center font-body text-sm font-semibold text-deep-ocean">
+        <span className="w-8 text-center font-body text-sm font-semibold text-deep-ocean dark:text-dark-text">
           {item.quantity}
         </span>
         <button
@@ -59,7 +59,7 @@ export default function CartItemRow({ item }: CartItemProps) {
       </div>
 
       {/* Line Total */}
-      <p className="font-body font-bold text-deep-ocean text-sm md:text-base w-20 text-right hidden sm:block">
+      <p className="font-body font-bold text-deep-ocean dark:text-dark-text text-sm md:text-base w-20 text-right hidden sm:block">
         {formatPrice(item.price * item.quantity)}
       </p>
 

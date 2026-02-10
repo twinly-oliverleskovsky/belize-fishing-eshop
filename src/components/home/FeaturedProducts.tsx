@@ -14,7 +14,7 @@ export default function FeaturedProducts() {
           <span className="text-tropical-teal text-sm font-body font-semibold uppercase tracking-[0.2em] block mb-3">
             Featured Gear
           </span>
-          <h2 className="font-display text-3xl md:text-4xl font-semibold text-deep-ocean tracking-tight">
+          <h2 className="font-display text-3xl md:text-4xl font-semibold text-deep-ocean dark:text-dark-text tracking-tight">
             Handpicked for Belize Waters
           </h2>
         </AnimatedSection>

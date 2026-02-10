@@ -16,10 +16,10 @@ export default function BlogPage() {
           <span className="text-tropical-teal text-sm font-body font-semibold uppercase tracking-[0.2em] block mb-3">
             Our Blog
           </span>
-          <h1 className="font-display text-4xl md:text-5xl font-bold text-deep-ocean tracking-tight mb-4">
+          <h1 className="font-display text-4xl md:text-5xl font-bold text-deep-ocean dark:text-dark-text tracking-tight mb-4">
             Fishing Stories & Tips
           </h1>
-          <p className="text-drift-gray font-body text-lg max-w-lg mx-auto">
+          <p className="text-drift-gray dark:text-dark-text-secondary font-body text-lg max-w-lg mx-auto">
             Expert advice, gear guides, and tales from the Caribbean waters
           </p>
         </AnimatedSection>

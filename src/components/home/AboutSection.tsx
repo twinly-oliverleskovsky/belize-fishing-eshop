@@ -34,15 +34,15 @@ export default function AboutSection() {
             <span className="text-tropical-teal text-sm font-body font-semibold uppercase tracking-[0.2em] block mb-3">
               About Us
             </span>
-            <h2 className="font-display text-3xl md:text-4xl font-semibold text-deep-ocean tracking-tight mb-6">
+            <h2 className="font-display text-3xl md:text-4xl font-semibold text-deep-ocean dark:text-dark-text tracking-tight mb-6">
               Your Trusted Partner on the Water
             </h2>
-            <p className="text-drift-gray font-body leading-relaxed mb-4">
+            <p className="text-drift-gray dark:text-dark-text-secondary font-body leading-relaxed mb-4">
               Founded in 2003 on the shores of San Pedro, Belize Fishing has grown from a small
               waterfront shop into the Caribbean&apos;s most trusted source for premium fishing equipment.
               Every product we carry has been tested in the crystal-clear waters of the Belize Barrier Reef.
             </p>
-            <p className="text-drift-gray font-body leading-relaxed mb-10">
+            <p className="text-drift-gray dark:text-dark-text-secondary font-body leading-relaxed mb-10">
               Our team of experienced anglers and local fishing guides hand-select every rod, reel,
               and lure we stock. We don&apos;t just sell gear — we share decades of knowledge to help
               you make the most of your time on the water.
@@ -55,8 +55,8 @@ export default function AboutSection() {
                   <div className="w-10 h-10 rounded-full bg-tropical-teal/10 flex items-center justify-center mx-auto mb-2">
                     <stat.icon className="text-tropical-teal" size={20} strokeWidth={1.5} />
                   </div>
-                  <p className="font-body text-xl font-bold text-deep-ocean">{stat.value}</p>
-                  <p className="text-drift-gray text-xs font-body uppercase tracking-wider">
+                  <p className="font-body text-xl font-bold text-deep-ocean dark:text-dark-text">{stat.value}</p>
+                  <p className="text-drift-gray dark:text-dark-text-secondary text-xs font-body uppercase tracking-wider">
                     {stat.label}
                   </p>
                 </div>

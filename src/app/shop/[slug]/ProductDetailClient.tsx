@@ -35,7 +35,7 @@ export default function ProductDetailClient({ slug }: ProductDetailClientProps) 
     return (
       <main className="pt-28 pb-24 min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="font-display text-3xl text-deep-ocean mb-4">
+          <h1 className="font-display text-3xl text-deep-ocean dark:text-dark-text mb-4">
             Product Not Found
           </h1>
           <Link
@@ -100,7 +100,7 @@ export default function ProductDetailClient({ slug }: ProductDetailClientProps) 
               Shop
             </Link>
             <ChevronRight size={14} strokeWidth={1.5} />
-            <span className="text-deep-ocean">{product.name}</span>
+            <span className="text-deep-ocean dark:text-dark-text">{product.name}</span>
           </nav>
         </AnimatedSection>
 
@@ -121,7 +121,7 @@ export default function ProductDetailClient({ slug }: ProductDetailClientProps) 
               <p className="text-tropical-teal text-sm font-body font-semibold uppercase tracking-[0.15em] mb-3">
                 {product.category}
               </p>
-              <h1 className="font-display text-3xl md:text-4xl font-bold text-deep-ocean tracking-tight mb-3">
+              <h1 className="font-display text-3xl md:text-4xl font-bold text-deep-ocean dark:text-dark-text tracking-tight mb-3">
                 {product.name}
               </h1>
 
@@ -138,16 +138,16 @@ export default function ProductDetailClient({ slug }: ProductDetailClientProps) 
               <p className="font-body text-2xl font-bold text-sun-gold mb-6">
                 {formatPrice(product.price)}
               </p>
-              <p className="text-drift-gray font-body leading-relaxed text-base mb-8">
+              <p className="text-drift-gray dark:text-dark-text-secondary font-body leading-relaxed text-base mb-8">
                 {product.description}
               </p>
 
               {/* Quantity + Wishlist */}
               <div className="flex items-center gap-4 mb-8 flex-wrap">
-                <span className="font-body text-sm font-medium text-deep-ocean uppercase tracking-wider">
+                <span className="font-body text-sm font-medium text-deep-ocean dark:text-dark-text uppercase tracking-wider">
                   Quantity
                 </span>
-                <div className="flex items-center border border-sand-medium rounded-lg">
+                <div className="flex items-center border border-sand-medium dark:border-dark-border rounded-lg">
                   <button
                     onClick={() => setQuantity(Math.max(1, quantity - 1))}
                     className="w-10 h-10 flex items-center justify-center text-drift-gray hover:text-deep-ocean transition-colors cursor-pointer"
@@ -155,7 +155,7 @@ export default function ProductDetailClient({ slug }: ProductDetailClientProps) 
                   >
                     <Minus size={16} strokeWidth={1.5} />
                   </button>
-                  <span className="w-10 text-center font-body font-semibold text-deep-ocean">
+                  <span className="w-10 text-center font-body font-semibold text-deep-ocean dark:text-dark-text">
                     {quantity}
                   </span>
                   <button
@@ -168,7 +168,7 @@ export default function ProductDetailClient({ slug }: ProductDetailClientProps) 
                 </div>
                 <button
                   onClick={handleToggleWishlist}
-                  className="w-10 h-10 rounded-full border border-sand-medium flex items-center justify-center hover:border-coral-accent transition-colors cursor-pointer"
+                  className="w-10 h-10 rounded-full border border-sand-medium dark:border-dark-border flex items-center justify-center hover:border-coral-accent transition-colors cursor-pointer"
                   aria-label={isInWishlist ? "Remove from wishlist" : "Add to wishlist"}
                 >
                   <Heart
@@ -188,7 +188,7 @@ export default function ProductDetailClient({ slug }: ProductDetailClientProps) 
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}
-                className="flex items-center justify-center gap-2 mt-4 text-drift-gray text-sm font-body"
+                className="flex items-center justify-center gap-2 mt-4 text-drift-gray dark:text-dark-text-secondary text-sm font-body"
               >
                 <Truck size={16} strokeWidth={1.5} />
                 <span>Free consultation on all orders</span>
@@ -208,7 +208,7 @@ export default function ProductDetailClient({ slug }: ProductDetailClientProps) 
         {related.length > 0 && (
           <section className="mt-24 lg:mt-32">
             <AnimatedSection className="text-center mb-12">
-              <h2 className="font-display text-2xl md:text-3xl font-semibold text-deep-ocean tracking-tight">
+              <h2 className="font-display text-2xl md:text-3xl font-semibold text-deep-ocean dark:text-dark-text tracking-tight">
                 You Might Also Like
               </h2>
             </AnimatedSection>

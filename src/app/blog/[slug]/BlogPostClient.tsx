@@ -43,7 +43,7 @@ export default function BlogPostClient({ slug }: BlogPostClientProps) {
         return (
           <h2
             key={i}
-            className="font-display text-2xl font-semibold text-deep-ocean mt-10 mb-4 tracking-tight"
+            className="font-display text-2xl font-semibold text-deep-ocean dark:text-dark-text mt-10 mb-4 tracking-tight"
           >
             {line.replace("## ", "")}
           </h2>
@@ -53,7 +53,7 @@ export default function BlogPostClient({ slug }: BlogPostClientProps) {
         return (
           <h3
             key={i}
-            className="font-display text-xl font-semibold text-deep-ocean mt-8 mb-3 tracking-tight"
+            className="font-display text-xl font-semibold text-deep-ocean dark:text-dark-text mt-8 mb-3 tracking-tight"
           >
             {line.replace("### ", "")}
           </h3>
@@ -70,12 +70,12 @@ export default function BlogPostClient({ slug }: BlogPostClientProps) {
         return (
           <div
             key={i}
-            className="grid grid-cols-3 gap-4 py-2 border-b border-sand-medium/50 text-sm font-body"
+            className="grid grid-cols-3 gap-4 py-2 border-b border-sand-medium/50 dark:border-dark-border/50 text-sm font-body"
           >
             {cells.map((cell, j) => (
               <span
                 key={j}
-                className={j === 0 ? "font-semibold text-deep-ocean" : "text-drift-gray"}
+                className={j === 0 ? "font-semibold text-deep-ocean dark:text-dark-text" : "text-drift-gray dark:text-dark-text-secondary"}
               >
                 {cell}
               </span>
@@ -87,8 +87,8 @@ export default function BlogPostClient({ slug }: BlogPostClientProps) {
         const match = line.match(/- \*\*(.+?)\*\*:?\s*(.*)/);
         if (match) {
           return (
-            <li key={i} className="text-drift-gray font-body leading-relaxed mb-2 ml-4">
-              <strong className="text-deep-ocean">{match[1]}</strong>
+            <li key={i} className="text-drift-gray dark:text-dark-text-secondary font-body leading-relaxed mb-2 ml-4">
+              <strong className="text-deep-ocean dark:text-dark-text">{match[1]}</strong>
               {match[2] ? `: ${match[2]}` : ""}
             </li>
           );
@@ -96,14 +96,14 @@ export default function BlogPostClient({ slug }: BlogPostClientProps) {
       }
       if (line.startsWith("- ")) {
         return (
-          <li key={i} className="text-drift-gray font-body leading-relaxed mb-2 ml-4">
+          <li key={i} className="text-drift-gray dark:text-dark-text-secondary font-body leading-relaxed mb-2 ml-4">
             {line.replace("- ", "")}
           </li>
         );
       }
       if (line.match(/^\d+\.\s/)) {
         return (
-          <li key={i} className="text-drift-gray font-body leading-relaxed mb-2 ml-4 list-decimal">
+          <li key={i} className="text-drift-gray dark:text-dark-text-secondary font-body leading-relaxed mb-2 ml-4 list-decimal">
             {line.replace(/^\d+\.\s/, "")}
           </li>
         );
@@ -114,11 +114,11 @@ export default function BlogPostClient({ slug }: BlogPostClientProps) {
       // Bold text handling
       const parts = line.split(/(\*\*.*?\*\*)/g);
       return (
-        <p key={i} className="text-drift-gray font-body leading-relaxed mb-2">
+        <p key={i} className="text-drift-gray dark:text-dark-text-secondary font-body leading-relaxed mb-2">
           {parts.map((part, j) => {
             if (part.startsWith("**") && part.endsWith("**")) {
               return (
-                <strong key={j} className="text-deep-ocean">
+                <strong key={j} className="text-deep-ocean dark:text-dark-text">
                   {part.slice(2, -2)}
                 </strong>
               );
@@ -195,7 +195,7 @@ export default function BlogPostClient({ slug }: BlogPostClientProps) {
       {/* Related Posts */}
       {recommended.length > 0 && (
         <div className="max-w-7xl mx-auto px-6 lg:px-8 mt-24">
-          <h2 className="font-display text-2xl md:text-3xl font-semibold text-deep-ocean tracking-tight mb-8 text-center">
+          <h2 className="font-display text-2xl md:text-3xl font-semibold text-deep-ocean dark:text-dark-text tracking-tight mb-8 text-center">
             More Articles
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">

@@ -51,13 +51,13 @@ export default function CartDrawer() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 30, stiffness: 300 }}
-            className="fixed top-0 right-0 z-[80] h-full w-full max-w-md bg-shell-white shadow-2xl flex flex-col"
+            className="fixed top-0 right-0 z-[80] h-full w-full max-w-md bg-shell-white dark:bg-dark-surface shadow-2xl flex flex-col"
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-6 py-5 border-b border-sand-medium">
+            <div className="flex items-center justify-between px-6 py-5 border-b border-sand-medium dark:border-dark-border">
               <div className="flex items-center gap-3">
-                <ShoppingBag size={20} strokeWidth={1.5} className="text-deep-ocean" />
-                <h2 className="font-display text-xl font-bold text-deep-ocean">
+                <ShoppingBag size={20} strokeWidth={1.5} className="text-deep-ocean dark:text-dark-text" />
+                <h2 className="font-display text-xl font-bold text-deep-ocean dark:text-dark-text">
                   Cart
                 </h2>
                 {totalItems > 0 && (
@@ -68,7 +68,7 @@ export default function CartDrawer() {
               </div>
               <button
                 onClick={close}
-                className="w-9 h-9 rounded-full hover:bg-sand-medium flex items-center justify-center transition-colors cursor-pointer"
+                className="w-9 h-9 rounded-full hover:bg-sand-medium dark:hover:bg-dark-card flex items-center justify-center transition-colors cursor-pointer"
                 aria-label="Close cart"
               >
                 <X size={20} strokeWidth={1.5} className="text-drift-gray" />
@@ -96,13 +96,13 @@ export default function CartDrawer() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: i * 0.05 }}
-                      className="flex gap-4 py-4 border-b border-sand-medium/60 last:border-b-0"
+                      className="flex gap-4 py-4 border-b border-sand-medium/60 dark:border-dark-border/60 last:border-b-0"
                     >
                       {/* Image */}
                       <Link
                         href={`/shop/${item.slug}`}
                         onClick={close}
-                        className="relative w-16 h-16 rounded-lg overflow-hidden bg-sand-medium shrink-0"
+                        className="relative w-16 h-16 rounded-lg overflow-hidden bg-sand-medium dark:bg-dark-border shrink-0"
                       >
                         <Image
                           src={item.image}
@@ -118,7 +118,7 @@ export default function CartDrawer() {
                         <Link
                           href={`/shop/${item.slug}`}
                           onClick={close}
-                          className="font-body text-sm font-semibold text-deep-ocean truncate block hover:text-tropical-teal transition-colors"
+                          className="font-body text-sm font-semibold text-deep-ocean dark:text-dark-text truncate block hover:text-tropical-teal transition-colors"
                         >
                           {item.name}
                         </Link>
@@ -128,7 +128,7 @@ export default function CartDrawer() {
 
                         {/* Qty controls */}
                         <div className="flex items-center gap-2 mt-2">
-                          <div className="flex items-center border border-sand-medium rounded">
+                          <div className="flex items-center border border-sand-medium dark:border-dark-border rounded">
                             <button
                               onClick={() => updateQuantity(item.id, item.quantity - 1)}
                               className="w-7 h-7 flex items-center justify-center text-drift-gray hover:text-deep-ocean transition-colors cursor-pointer"
@@ -136,7 +136,7 @@ export default function CartDrawer() {
                             >
                               <Minus size={12} strokeWidth={2} />
                             </button>
-                            <span className="w-7 text-center font-body text-xs font-semibold text-deep-ocean">
+                            <span className="w-7 text-center font-body text-xs font-semibold text-deep-ocean dark:text-dark-text">
                               {item.quantity}
                             </span>
                             <button
@@ -158,7 +158,7 @@ export default function CartDrawer() {
                       </div>
 
                       {/* Line total */}
-                      <p className="font-body text-sm font-bold text-deep-ocean shrink-0">
+                      <p className="font-body text-sm font-bold text-deep-ocean dark:text-dark-text shrink-0">
                         {formatPrice(item.price * item.quantity)}
                       </p>
                     </motion.div>
@@ -169,9 +169,9 @@ export default function CartDrawer() {
 
             {/* Footer */}
             {items.length > 0 && (
-              <div className="border-t border-sand-medium px-6 py-5 space-y-4">
+              <div className="border-t border-sand-medium dark:border-dark-border px-6 py-5 space-y-4">
                 <div className="flex justify-between items-center">
-                  <span className="font-body font-semibold text-deep-ocean">
+                  <span className="font-body font-semibold text-deep-ocean dark:text-dark-text">
                     Subtotal
                   </span>
                   <span className="font-body font-bold text-sun-gold text-lg">

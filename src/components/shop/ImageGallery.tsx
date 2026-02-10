@@ -17,7 +17,7 @@ export default function ImageGallery({ images, alt, badge }: ImageGalleryProps) 
   return (
     <div className="space-y-4">
       {/* Main Image */}
-      <div className="relative aspect-square rounded-2xl overflow-hidden bg-sand-medium">
+      <div className="relative aspect-square rounded-2xl overflow-hidden bg-sand-medium dark:bg-dark-border">
         <AnimatePresence mode="wait">
           <motion.div
             key={selected}

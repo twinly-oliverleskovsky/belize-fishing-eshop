@@ -33,7 +33,7 @@ export default function BlogCard({ post }: BlogCardProps) {
         </div>
 
         {/* Meta */}
-        <div className="flex items-center gap-4 text-drift-gray text-xs font-body mb-3">
+        <div className="flex items-center gap-4 text-drift-gray dark:text-dark-text-secondary text-xs font-body mb-3">
           <span className="flex items-center gap-1.5">
             <Calendar size={13} strokeWidth={1.5} />
             {new Date(post.date).toLocaleDateString("en-US", {
@@ -49,18 +49,18 @@ export default function BlogCard({ post }: BlogCardProps) {
         </div>
 
         {/* Title */}
-        <h2 className="font-display text-xl font-semibold text-deep-ocean tracking-tight mb-2 group-hover:text-tropical-teal transition-colors duration-300 leading-snug">
+        <h2 className="font-display text-xl font-semibold text-deep-ocean dark:text-dark-text tracking-tight mb-2 group-hover:text-tropical-teal transition-colors duration-300 leading-snug">
           {post.title}
         </h2>
 
         {/* Excerpt */}
-        <p className="text-drift-gray font-body text-sm leading-relaxed mb-4 line-clamp-2">
+        <p className="text-drift-gray dark:text-dark-text-secondary font-body text-sm leading-relaxed mb-4 line-clamp-2">
           {post.excerpt}
         </p>
 
         {/* Author + Read More */}
         <div className="flex items-center justify-between">
-          <span className="flex items-center gap-1.5 text-drift-gray text-xs font-body">
+          <span className="flex items-center gap-1.5 text-drift-gray dark:text-dark-text-secondary text-xs font-body">
             <User size={13} strokeWidth={1.5} />
             {post.author}
           </span>

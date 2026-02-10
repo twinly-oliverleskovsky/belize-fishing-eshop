@@ -15,7 +15,7 @@ export default function CartPageClient() {
     <main className="pt-28 pb-24 lg:pb-32 min-h-screen">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <AnimatedSection>
-          <h1 className="font-display text-4xl md:text-5xl font-bold text-deep-ocean tracking-tight mb-12">
+          <h1 className="font-display text-4xl md:text-5xl font-bold text-deep-ocean dark:text-dark-text tracking-tight mb-12">
             Your Cart
           </h1>
         </AnimatedSection>
@@ -28,10 +28,10 @@ export default function CartPageClient() {
                 size={64}
                 strokeWidth={1}
               />
-              <h2 className="font-display text-2xl text-deep-ocean mb-4">
+              <h2 className="font-display text-2xl text-deep-ocean dark:text-dark-text mb-4">
                 Your cart is empty
               </h2>
-              <p className="text-drift-gray font-body mb-8">
+              <p className="text-drift-gray dark:text-dark-text-secondary font-body mb-8">
                 Looks like you haven&apos;t added any gear yet.
               </p>
               <Link href="/shop">
