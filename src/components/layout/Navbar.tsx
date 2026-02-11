@@ -66,11 +66,11 @@ export default function Navbar() {
             {/* Logo */}
             <Link href="/" className="flex items-center gap-3 group">
               <Image
-                src="/logo.svg"
+                src="/logo.png"
                 alt="Belize Fishing Logo"
-                width={44}
-                height={22}
-                className="brightness-0 invert transition-transform duration-300 group-hover:scale-110"
+                width={40}
+                height={40}
+                className="invert transition-transform duration-300 group-hover:scale-110"
               />
               <span className="font-display text-xl font-bold text-white tracking-tight">
                 Belize Fishing

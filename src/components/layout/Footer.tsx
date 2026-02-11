@@ -11,11 +11,11 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-4">
               <Image
-                src="/logo.svg"
+                src="/logo.png"
                 alt="Belize Fishing Logo"
-                width={40}
-                height={20}
-                className="brightness-0 invert"
+                width={36}
+                height={36}
+                className="invert"
               />
               <span className="font-display text-xl font-bold">Belize Fishing</span>
             </div>
