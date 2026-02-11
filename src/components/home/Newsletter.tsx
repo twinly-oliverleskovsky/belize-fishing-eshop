@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Send } from "lucide-react";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import Button from "@/components/ui/Button";
+import { analytics } from "@/lib/analytics";
 
 export default function Newsletter() {
   const [email, setEmail] = useState("");
@@ -12,6 +13,7 @@ export default function Newsletter() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (email) {
+      analytics.newsletterSignup(email);
       setSubmitted(true);
       setEmail("");
     }

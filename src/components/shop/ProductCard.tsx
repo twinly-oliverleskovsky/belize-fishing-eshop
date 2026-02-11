@@ -12,6 +12,7 @@ import { useCartStore } from "@/store/cartStore";
 import { useWishlistStore } from "@/store/wishlistStore";
 import { useToastStore } from "@/store/toastStore";
 import { useUIStore } from "@/store/uiStore";
+import { analytics } from "@/lib/analytics";
 
 interface ProductCardProps {
   product: Product;
@@ -36,6 +37,7 @@ export default function ProductCard({ product }: ProductCardProps) {
     });
     triggerFlyToCart(e.clientX, e.clientY);
     addToast(`${product.name} added to cart`);
+    analytics.addToCart(product.id, product.name, product.price, 1);
   };
 
   const handleToggleWishlist = (e: React.MouseEvent) => {

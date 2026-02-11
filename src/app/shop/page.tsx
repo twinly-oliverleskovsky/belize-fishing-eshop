@@ -3,9 +3,16 @@ import AnimatedSection from "@/components/ui/AnimatedSection";
 import ProductGrid from "@/components/shop/ProductGrid";
 
 export const metadata: Metadata = {
-  title: "Shop | Belize Fishing",
+  title: "Shop",
   description:
     "Browse our complete collection of premium fishing equipment curated for Caribbean waters. Rods, reels, lures, accessories and boats.",
+  openGraph: {
+    title: "Shop | Belize Fishing",
+    description:
+      "Browse our complete collection of premium fishing equipment curated for Caribbean waters.",
+    url: "/shop",
+    type: "website",
+  },
 };
 
 export default function ShopPage() {

@@ -10,6 +10,7 @@ import { useCartStore } from "@/store/cartStore";
 import { formatPrice } from "@/lib/utils";
 import Button from "@/components/ui/Button";
 import AnimatedSection from "@/components/ui/AnimatedSection";
+import { analytics } from "@/lib/analytics";
 
 const checkoutSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -63,6 +64,7 @@ export default function CheckoutClient() {
 
     setErrors({});
     setSubmitted(true);
+    analytics.purchase(totalPrice, items.length);
     clearCart();
   };
 

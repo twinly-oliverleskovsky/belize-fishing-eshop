@@ -18,8 +18,23 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${post.title} | Belize Fishing Blog`,
+    title: post.title,
     description: post.excerpt,
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      url: `/blog/${post.slug}`,
+      type: "article",
+      publishedTime: post.date,
+      authors: [post.author],
+      images: [{ url: post.image, width: 800, height: 600, alt: post.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      images: [post.image],
+    },
   };
 }
 

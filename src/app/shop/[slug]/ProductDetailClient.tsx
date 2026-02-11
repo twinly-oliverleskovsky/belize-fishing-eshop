@@ -88,7 +88,7 @@ export default function ProductDetailClient({ slug }: ProductDetailClientProps) 
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Breadcrumb */}
         <AnimatedSection>
-          <nav className="flex items-center gap-2 text-sm font-body text-drift-gray mb-10">
+          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm font-body text-drift-gray mb-10">
             <Link href="/" className="hover:text-tropical-teal transition-colors">
               Home
             </Link>

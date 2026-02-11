@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue, useTransform, PanInfo } from "framer-motion";
 import { X, ShoppingBag, Minus, Plus, Trash2 } from "lucide-react";
 import { useCartStore } from "@/store/cartStore";
 import { useUIStore } from "@/store/uiStore";
@@ -31,6 +31,59 @@ export default function CartDrawer() {
     };
   }, [isOpen]);
 
+  // Close on Escape key
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") close();
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen, close]);
+
+  // Swipe to close (drag right to dismiss)
+  const dragX = useMotionValue(0);
+  const drawerOpacity = useTransform(dragX, [0, 300], [1, 0.3]);
+
+  const handleDragEnd = (_: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
+    if (info.offset.x > 100 || info.velocity.x > 500) {
+      close();
+    }
+  };
+
+  // Focus trap
+  useEffect(() => {
+    if (!isOpen) return;
+    const drawer = document.querySelector("[data-cart-drawer]") as HTMLElement;
+    if (!drawer) return;
+
+    const focusableEls = drawer.querySelectorAll<HTMLElement>(
+      'a[href], button:not([disabled]), input, textarea, select, [tabindex]:not([tabindex="-1"])'
+    );
+    const firstEl = focusableEls[0];
+    const lastEl = focusableEls[focusableEls.length - 1];
+
+    firstEl?.focus();
+
+    const handleTab = (e: KeyboardEvent) => {
+      if (e.key !== "Tab") return;
+      if (e.shiftKey) {
+        if (document.activeElement === firstEl) {
+          e.preventDefault();
+          lastEl?.focus();
+        }
+      } else {
+        if (document.activeElement === lastEl) {
+          e.preventDefault();
+          firstEl?.focus();
+        }
+      }
+    };
+
+    document.addEventListener("keydown", handleTab);
+    return () => document.removeEventListener("keydown", handleTab);
+  }, [isOpen]);
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -51,7 +104,16 @@ export default function CartDrawer() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 30, stiffness: 300 }}
-            className="fixed top-0 right-0 z-[80] h-full w-full max-w-md bg-shell-white dark:bg-dark-surface shadow-2xl flex flex-col"
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={{ left: 0, right: 0.4 }}
+            onDragEnd={handleDragEnd}
+            style={{ x: dragX, opacity: drawerOpacity }}
+            data-cart-drawer
+            role="dialog"
+            aria-modal="true"
+            aria-label="Shopping cart"
+            className="fixed top-0 right-0 z-[80] h-full w-full max-w-md bg-shell-white dark:bg-dark-surface shadow-2xl flex flex-col touch-pan-y"
           >
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-5 border-b border-sand-medium dark:border-dark-border">
@@ -131,20 +193,20 @@ export default function CartDrawer() {
                           <div className="flex items-center border border-sand-medium dark:border-dark-border rounded">
                             <button
                               onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                              className="w-7 h-7 flex items-center justify-center text-drift-gray hover:text-deep-ocean transition-colors cursor-pointer"
-                              aria-label="Decrease"
+                              className="w-9 h-9 flex items-center justify-center text-drift-gray hover:text-deep-ocean transition-colors cursor-pointer"
+                              aria-label={`Decrease quantity of ${item.name}`}
                             >
-                              <Minus size={12} strokeWidth={2} />
+                              <Minus size={14} strokeWidth={2} />
                             </button>
                             <span className="w-7 text-center font-body text-xs font-semibold text-deep-ocean dark:text-dark-text">
                               {item.quantity}
                             </span>
                             <button
                               onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                              className="w-7 h-7 flex items-center justify-center text-drift-gray hover:text-deep-ocean transition-colors cursor-pointer"
-                              aria-label="Increase"
+                              className="w-9 h-9 flex items-center justify-center text-drift-gray hover:text-deep-ocean transition-colors cursor-pointer"
+                              aria-label={`Increase quantity of ${item.name}`}
                             >
-                              <Plus size={12} strokeWidth={2} />
+                              <Plus size={14} strokeWidth={2} />
                             </button>
                           </div>
                           <button

@@ -10,11 +10,12 @@ interface CategoryFilterProps {
 
 export default function CategoryFilter({ active, onChange }: CategoryFilterProps) {
   return (
-    <div className="flex flex-wrap gap-3 justify-center">
+    <div role="group" aria-label="Filter by category" className="flex flex-wrap gap-3 justify-center">
       {categories.map((cat) => (
         <button
           key={cat}
           onClick={() => onChange(cat)}
+          aria-pressed={active === cat}
           className={cn(
             "px-5 py-2 rounded-full text-sm font-body font-medium transition-all duration-300 cursor-pointer",
             active === cat

@@ -3,9 +3,16 @@ import AnimatedSection from "@/components/ui/AnimatedSection";
 import BlogGrid from "@/components/blog/BlogGrid";
 
 export const metadata: Metadata = {
-  title: "Blog | Belize Fishing",
+  title: "Blog",
   description:
     "Tips, guides, and stories from the waters of Belize. Expert fishing advice, gear reviews, and destination guides.",
+  openGraph: {
+    title: "Blog | Belize Fishing",
+    description:
+      "Tips, guides, and stories from the waters of Belize. Expert fishing advice and destination guides.",
+    url: "/blog",
+    type: "website",
+  },
 };
 
 export default function BlogPage() {
