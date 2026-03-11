@@ -20,8 +20,11 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const totalItems = useCartStore((s) => s.totalItems());
   const openCartDrawer = useUIStore((s) => s.openCartDrawer);
+
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -70,9 +73,13 @@ export default function Navbar() {
                 alt="Belize Fishing Logo"
                 width={40}
                 height={40}
-                className="invert transition-transform duration-300 group-hover:scale-110"
+                className={`transition-transform duration-300 group-hover:scale-110 ${scrolled ? "invert" : "dark:invert"}`}
               />
-              <span className="font-display text-xl font-bold text-white tracking-tight">
+              <span
+                className={`font-display text-xl font-bold tracking-tight transition-colors duration-300 ${
+                  scrolled ? "text-white" : "text-deep-ocean dark:text-white"
+                }`}
+              >
                 Belize Fishing
               </span>
             </Link>
@@ -84,7 +91,9 @@ export default function Navbar() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="text-white/80 hover:text-sun-gold transition-colors duration-300 text-sm font-medium uppercase tracking-widest"
+                    className={`transition-colors duration-300 text-sm font-medium uppercase tracking-widest hover:text-sun-gold ${
+                      scrolled ? "text-white/80" : "text-deep-ocean/90 dark:text-white/80"
+                    }`}
                   >
                     {link.label}
                   </Link>
@@ -95,28 +104,34 @@ export default function Navbar() {
               <button
                 data-cart-icon
                 onClick={openCartDrawer}
-                className="relative text-white hover:text-sun-gold transition-colors duration-300 cursor-pointer"
+                className={`relative transition-colors duration-300 cursor-pointer hover:text-sun-gold ${
+                  scrolled ? "text-white" : "text-deep-ocean dark:text-white"
+                }`}
                 aria-label="Open cart"
               >
                 <ShoppingBag size={22} strokeWidth={1.5} />
-                <AnimatePresence>
-                  {totalItems > 0 && (
-                    <motion.span
-                      key={totalItems}
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      exit={{ scale: 0 }}
-                      transition={{ type: "spring", stiffness: 500, damping: 20 }}
-                      className="absolute -top-2 -right-2 bg-coral-accent text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold"
-                    >
-                      {totalItems}
-                    </motion.span>
-                  )}
-                </AnimatePresence>
+                {mounted && (
+                  <AnimatePresence>
+                    {totalItems > 0 && (
+                      <motion.span
+                        key={totalItems}
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        exit={{ scale: 0 }}
+                        transition={{ type: "spring", stiffness: 500, damping: 20 }}
+                        className="absolute -top-2 -right-2 bg-coral-accent text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold"
+                      >
+                        {totalItems}
+                      </motion.span>
+                    )}
+                  </AnimatePresence>
+                )}
               </button>
               <button
                 onClick={() => setMobileOpen(true)}
-                className="md:hidden text-white"
+                className={`md:hidden transition-colors duration-300 ${
+                  scrolled ? "text-white" : "text-deep-ocean dark:text-white"
+                }`}
                 aria-label="Open menu"
               >
                 <Menu size={24} strokeWidth={1.5} />
@@ -175,7 +190,7 @@ export default function Navbar() {
                   className="text-sun-gold text-xl font-body font-semibold flex items-center gap-2 cursor-pointer"
                 >
                   <ShoppingBag size={20} strokeWidth={1.5} />
-                  Cart ({totalItems})
+                  Cart{mounted && totalItems > 0 ? ` (${totalItems})` : ""}
                 </button>
               </motion.div>
             </nav>

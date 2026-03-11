@@ -19,7 +19,7 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email Us",
-    lines: ["info@belizefishing.com", "We reply within 24 hours"],
+    lines: ["office@twinly.eu", "We reply within 24 hours"],
   },
   {
     icon: Clock,

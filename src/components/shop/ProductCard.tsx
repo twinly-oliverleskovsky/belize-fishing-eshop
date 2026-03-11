@@ -16,9 +16,10 @@ import { analytics } from "@/lib/analytics";
 
 interface ProductCardProps {
   product: Product;
+  priority?: boolean;
 }
 
-export default function ProductCard({ product }: ProductCardProps) {
+export default function ProductCard({ product, priority = false }: ProductCardProps) {
   const addItem = useCartStore((s) => s.addItem);
   const toggleWishlist = useWishlistStore((s) => s.toggleItem);
   const isInWishlist = useWishlistStore((s) => s.isInWishlist(product.id));
@@ -71,6 +72,8 @@ export default function ProductCard({ product }: ProductCardProps) {
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="object-cover transition-transform duration-500 group-hover:scale-105"
+            priority={priority}
+            loading={priority ? undefined : "lazy"}
           />
           {product.badge && (
             <div className="absolute top-3 left-3">

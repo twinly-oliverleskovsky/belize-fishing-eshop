@@ -43,7 +43,12 @@ export default function CartDrawer() {
 
   // Swipe to close (drag right to dismiss)
   const dragX = useMotionValue(0);
-  const drawerOpacity = useTransform(dragX, [0, 300], [1, 0.3]);
+  const drawerOpacity = useTransform(dragX, (v) => {
+    const n = Number(v);
+    if (typeof n !== "number" || !Number.isFinite(n) || n <= 0) return 1;
+    if (n >= 300) return 0.3;
+    return 1 - (n / 300) * 0.7;
+  });
 
   const handleDragEnd = (_: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
     if (info.offset.x > 100 || info.velocity.x > 500) {

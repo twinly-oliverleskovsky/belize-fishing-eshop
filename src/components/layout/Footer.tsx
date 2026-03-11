@@ -88,7 +88,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={16} className="text-tropical-teal shrink-0" strokeWidth={1.5} />
-                <span className="text-white/60 text-sm font-body">info@belizefishing.com</span>
+                <span className="text-white/60 text-sm font-body">office@twinly.eu</span>
               </li>
             </ul>
           </div>

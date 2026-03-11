@@ -9,7 +9,8 @@ import SearchBar from "./SearchBar";
 import SortSelect, { SortOption } from "./SortSelect";
 import Button from "@/components/ui/Button";
 
-const PRODUCTS_PER_LOAD = 6;
+const PRODUCTS_PER_LOAD = 9;
+const PRIORITY_COUNT = 3; // prvé obrázky načítané s vyššou prioritou
 
 export default function ProductGrid() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -113,16 +114,16 @@ export default function ProductGrid() {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
         >
           <AnimatePresence mode="popLayout">
-            {visibleProducts.map((product) => (
+            {visibleProducts.map((product, index) => (
               <motion.div
                 key={product.id}
                 layout
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.3 }}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
               >
-                <ProductCard product={product} />
+                <ProductCard product={product} priority={index < PRIORITY_COUNT} />
               </motion.div>
             ))}
           </AnimatePresence>

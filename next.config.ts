@@ -9,6 +9,8 @@ const nextConfig: NextConfig = {
         hostname: "images.unsplash.com",
       },
     ],
+    // V dev móde neoptimalizovať lokálne obrázky – rýchlejšie načítanie
+    unoptimized: process.env.NODE_ENV === "development",
   },
 };
 

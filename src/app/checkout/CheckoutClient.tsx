@@ -89,7 +89,7 @@ TOTAL: BZ$${totalPrice.toFixed(2)}
     setErrors({});
 
     const body = buildOrderText();
-    const mailtoLink = `mailto:info@belizefishing.com?subject=${encodeURIComponent(`New Order from ${form.name}`)}&body=${encodeURIComponent(body)}`;
+    const mailtoLink = `mailto:office@twinly.eu?subject=${encodeURIComponent(`New Order from ${form.name}`)}&body=${encodeURIComponent(body)}`;
 
     window.location.href = mailtoLink;
     setSubmitted(true);
@@ -257,7 +257,7 @@ TOTAL: BZ$${totalPrice.toFixed(2)}
                   <span>+501-000-0000</span>
                 </div>
                 <p className="text-drift-gray dark:text-dark-text-secondary text-xs font-body mt-1">
-                  info@belizefishing.com
+                  office@twinly.eu
                 </p>
               </div>
 
