@@ -56,7 +56,7 @@ export default function Footer() {
               Categories
             </h4>
             <ul className="space-y-3">
-              {["Rods", "Reels", "Lures", "Accessories", "Boats"].map((cat) => (
+              {["Traps", "Hooks", "Lures", "Reels", "Spearguns", "Nets", "Rods", "Lines", "Diving Gear"].map((cat) => (
                 <li key={cat}>
                   <Link
                     href="/shop"
@@ -78,13 +78,13 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin size={16} className="text-tropical-teal mt-0.5 shrink-0" strokeWidth={1.5} />
                 <span className="text-white/60 text-sm font-body">
-                  123 Barrier Reef Drive,<br />
-                  San Pedro, Belize
+                  San Pedro,<br />
+                  Ambergris Caye, Belize
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={16} className="text-tropical-teal shrink-0" strokeWidth={1.5} />
-                <span className="text-white/60 text-sm font-body">+501-226-1234</span>
+                <span className="text-white/60 text-sm font-body">+501-000-0000</span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={16} className="text-tropical-teal shrink-0" strokeWidth={1.5} />

@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, ShoppingBag } from "lucide-react";
+import { Check, ShoppingBag, Copy, Mail, Phone } from "lucide-react";
 import { z } from "zod";
 import { useCartStore } from "@/store/cartStore";
 import { formatPrice } from "@/lib/utils";
@@ -30,6 +30,7 @@ export default function CheckoutClient() {
 
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
+  const [copied, setCopied] = useState(false);
   const [form, setForm] = useState<FormData>({
     name: "",
     email: "",
@@ -48,6 +49,29 @@ export default function CheckoutClient() {
     }
   };
 
+  const buildOrderText = () => {
+    const orderLines = items
+      .map(
+        (item) =>
+          `- ${item.name} x${item.quantity} — BZ$${(item.price * item.quantity).toFixed(2)}`
+      )
+      .join("\n");
+
+    return `NEW ORDER — Belize Fishing
+
+Customer: ${form.name}
+Email: ${form.email}
+Phone: ${form.phone}
+Address: ${form.address || "Not provided"}
+Notes: ${form.notes || "None"}
+
+--- ORDER ITEMS ---
+${orderLines}
+
+TOTAL: BZ$${totalPrice.toFixed(2)}
+---`;
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const result = checkoutSchema.safeParse(form);
@@ -63,12 +87,37 @@ export default function CheckoutClient() {
     }
 
     setErrors({});
+
+    const body = buildOrderText();
+    const mailtoLink = `mailto:info@belizefishing.com?subject=${encodeURIComponent(`New Order from ${form.name}`)}&body=${encodeURIComponent(body)}`;
+
+    window.location.href = mailtoLink;
     setSubmitted(true);
     analytics.purchase(totalPrice, items.length);
+  };
+
+  const handleCopyOrder = async () => {
+    const text = buildOrderText();
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 3000);
+    } catch {
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textarea);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 3000);
+    }
+  };
+
+  const handleClearCart = () => {
     clearCart();
   };
 
-  // Empty cart check
   if (items.length === 0 && !submitted) {
     return (
       <main className="pt-28 pb-24 lg:pb-32 min-h-screen">
@@ -103,30 +152,120 @@ export default function CheckoutClient() {
               key="success"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="text-center py-20 max-w-lg mx-auto"
+              className="py-16 max-w-2xl mx-auto"
             >
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ type: "spring", delay: 0.2 }}
-                className="w-20 h-20 rounded-full bg-tropical-teal flex items-center justify-center mx-auto mb-8"
-              >
-                <Check className="text-white" size={36} strokeWidth={2} />
-              </motion.div>
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-deep-ocean dark:text-dark-text mb-4">
-                Thank You for Your Order!
-              </h2>
-              <p className="text-drift-gray dark:text-dark-text-secondary font-body text-lg mb-2">
-                Order <span className="font-semibold text-deep-ocean dark:text-dark-text">#BF-001</span>
-              </p>
-              <p className="text-drift-gray dark:text-dark-text-secondary font-body mb-8">
-                We&apos;ll contact you shortly at{" "}
-                <span className="text-deep-ocean dark:text-dark-text font-medium">{form.phone || "your number"}</span>{" "}
-                to arrange delivery and payment details.
-              </p>
-              <Link href="/shop">
-                <Button>Continue Shopping &rarr;</Button>
-              </Link>
+              <div className="text-center mb-10">
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ type: "spring", delay: 0.2 }}
+                  className="w-20 h-20 rounded-full bg-tropical-teal flex items-center justify-center mx-auto mb-8"
+                >
+                  <Mail className="text-white" size={36} strokeWidth={2} />
+                </motion.div>
+                <h2 className="font-display text-3xl md:text-4xl font-bold text-deep-ocean dark:text-dark-text mb-4">
+                  Almost Done!
+                </h2>
+                <p className="text-drift-gray dark:text-dark-text-secondary font-body text-lg mb-2">
+                  Your email client should have opened with the order details.
+                </p>
+                <p className="text-drift-gray dark:text-dark-text-secondary font-body">
+                  Please <span className="font-semibold text-deep-ocean dark:text-dark-text">send the email</span> to complete your order.
+                </p>
+              </div>
+
+              {/* Order summary on screen */}
+              <div className="bg-sand-medium dark:bg-dark-card rounded-2xl p-6 lg:p-8 mb-8">
+                <h3 className="font-body text-lg font-semibold text-deep-ocean dark:text-dark-text uppercase tracking-wider mb-4">
+                  Order Summary
+                </h3>
+                <div className="space-y-3 mb-6">
+                  {items.map((item) => (
+                    <div key={item.id} className="flex items-center justify-between gap-3">
+                      <div className="flex items-center gap-3 min-w-0">
+                        <div className="relative w-10 h-10 rounded-lg overflow-hidden bg-shell-white dark:bg-dark-border shrink-0">
+                          <Image
+                            src={item.image}
+                            alt={item.name}
+                            fill
+                            sizes="40px"
+                            className="object-cover"
+                          />
+                        </div>
+                        <div className="min-w-0">
+                          <p className="font-body text-sm font-medium text-deep-ocean dark:text-dark-text truncate">
+                            {item.name}
+                          </p>
+                          <p className="text-drift-gray dark:text-dark-text-secondary text-xs font-body">
+                            Qty: {item.quantity}
+                          </p>
+                        </div>
+                      </div>
+                      <p className="font-body text-sm font-bold text-deep-ocean dark:text-dark-text shrink-0">
+                        {formatPrice(item.price * item.quantity)}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+                <div className="border-t border-sun-gold/30 pt-4 mb-6">
+                  <div className="flex justify-between">
+                    <span className="font-body font-semibold text-deep-ocean dark:text-dark-text text-lg">
+                      Total
+                    </span>
+                    <span className="font-body font-bold text-sun-gold text-xl">
+                      {formatPrice(totalPrice)}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  <p className="text-drift-gray dark:text-dark-text-secondary text-sm font-body">
+                    <span className="font-semibold text-deep-ocean dark:text-dark-text">Customer:</span> {form.name} ({form.email}, {form.phone})
+                  </p>
+                  {form.address && (
+                    <p className="text-drift-gray dark:text-dark-text-secondary text-sm font-body">
+                      <span className="font-semibold text-deep-ocean dark:text-dark-text">Address:</span> {form.address}
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              {/* Action buttons */}
+              <div className="space-y-3">
+                <button
+                  onClick={handleCopyOrder}
+                  className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border-2 border-tropical-teal text-tropical-teal hover:bg-tropical-teal hover:text-white transition-all font-body font-semibold"
+                >
+                  <Copy size={18} />
+                  {copied ? "Copied to Clipboard!" : "Copy Order to Clipboard"}
+                </button>
+                <button
+                  onClick={handleClearCart}
+                  className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-tropical-teal text-white hover:bg-tropical-teal/90 transition-all font-body font-semibold"
+                >
+                  <Check size={18} />
+                  I&apos;ve Sent the Email — Clear Cart
+                </button>
+              </div>
+
+              <div className="mt-8 text-center">
+                <p className="text-drift-gray dark:text-dark-text-secondary text-sm font-body mb-2">
+                  Having trouble? Contact us directly:
+                </p>
+                <div className="flex items-center justify-center gap-2 text-tropical-teal font-body font-semibold">
+                  <Phone size={16} />
+                  <span>+501-000-0000</span>
+                </div>
+                <p className="text-drift-gray dark:text-dark-text-secondary text-xs font-body mt-1">
+                  info@belizefishing.com
+                </p>
+              </div>
+
+              <div className="mt-8 text-center">
+                <Link href="/shop">
+                  <Button>Continue Shopping &rarr;</Button>
+                </Link>
+              </div>
             </motion.div>
           ) : (
             <motion.div
@@ -146,11 +285,11 @@ export default function CheckoutClient() {
                 <div className="lg:col-span-3">
                   <AnimatedSection>
                     <h2 className="font-display text-2xl font-semibold text-deep-ocean dark:text-dark-text mb-2">
-                      Complete Your Order
+                      Request Your Order
                     </h2>
                     <p className="text-drift-gray dark:text-dark-text-secondary font-body mb-10">
-                      Fill in your details and we&apos;ll contact you to arrange
-                      delivery and payment
+                      Fill in your details and we&apos;ll open your email client
+                      with the order summary. Just hit send!
                     </p>
 
                     <form onSubmit={handleSubmit} className="space-y-8" noValidate>
@@ -239,8 +378,12 @@ export default function CheckoutClient() {
                       </div>
 
                       <Button type="submit" fullWidth size="lg">
-                        Place Order
+                        Send Order via Email &rarr;
                       </Button>
+                      <p className="text-drift-gray dark:text-dark-text-secondary text-xs font-body text-center">
+                        This will open your email client with the order details.
+                        We&apos;ll confirm your order by phone or email.
+                      </p>
                     </form>
                   </AnimatedSection>
                 </div>

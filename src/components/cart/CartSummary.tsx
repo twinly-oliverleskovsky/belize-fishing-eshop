@@ -37,13 +37,17 @@ export default function CartSummary() {
 
       <Link href="/checkout">
         <Button fullWidth size="lg">
-          Proceed to Order &rarr;
+          Request Order via Email &rarr;
         </Button>
       </Link>
 
-      <div className="mt-4 flex items-center justify-center gap-2 text-drift-gray dark:text-dark-text-secondary text-sm font-body">
+      <p className="mt-3 text-drift-gray dark:text-dark-text-secondary text-xs font-body text-center">
+        We&apos;ll confirm your order by phone or email
+      </p>
+
+      <div className="mt-3 flex items-center justify-center gap-2 text-drift-gray dark:text-dark-text-secondary text-sm font-body">
         <Phone size={14} strokeWidth={1.5} />
-        <span>Questions? Call +501-226-1234</span>
+        <span>Questions? Call +501-000-0000</span>
       </div>
     </div>
   );

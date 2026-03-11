@@ -9,12 +9,12 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Visit Us",
-    lines: ["123 Barrier Reef Drive", "San Pedro, Ambergris Caye, Belize"],
+    lines: ["San Pedro", "Ambergris Caye, Belize"],
   },
   {
     icon: Phone,
     title: "Call Us",
-    lines: ["+501-226-1234", "Mon-Sat: 7am - 6pm"],
+    lines: ["+501-000-0000", "Mon-Sat: 7am - 6pm"],
   },
   {
     icon: Mail,
