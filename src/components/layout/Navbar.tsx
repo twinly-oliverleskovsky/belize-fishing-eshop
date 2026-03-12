@@ -8,6 +8,7 @@ import Image from "next/image";
 import { useCartStore } from "@/store/cartStore";
 import { useUIStore } from "@/store/uiStore";
 import ThemeToggle from "@/components/ui/ThemeToggle";
+import { PHONE_DISPLAY } from "@/data/contact";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -193,6 +194,14 @@ export default function Navbar() {
                   Cart{mounted && totalItems > 0 ? ` (${totalItems})` : ""}
                 </button>
               </motion.div>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                className="text-white/80 text-sm font-body mt-6 text-center"
+              >
+                Call: {PHONE_DISPLAY}
+              </motion.p>
             </nav>
           </motion.div>
         )}

@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { AlertTriangle } from "lucide-react";
+import { PHONE_DISPLAY } from "@/data/contact";
 
 export default function Error({
   error,
@@ -27,9 +28,12 @@ export default function Error({
         <h1 className="font-display text-3xl md:text-4xl font-bold text-deep-ocean dark:text-dark-text tracking-tight mb-4">
           Something Went Wrong
         </h1>
-        <p className="text-drift-gray dark:text-dark-text-secondary font-body mb-8 leading-relaxed">
+        <p className="text-drift-gray dark:text-dark-text-secondary font-body mb-4 leading-relaxed">
           We encountered an unexpected error. Please try again, or head back to
           the homepage if the problem persists.
+        </p>
+        <p className="text-drift-gray dark:text-dark-text-secondary font-body mb-8 text-sm">
+          Need help? Call us: {PHONE_DISPLAY}
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <button

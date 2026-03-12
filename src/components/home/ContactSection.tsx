@@ -4,23 +4,20 @@ import { useState } from "react";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import Button from "@/components/ui/Button";
 import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
+import { PHONE_DISPLAY, EMAIL, ADDRESS_LINES } from "@/data/contact";
 
 const contactInfo = [
   {
     icon: MapPin,
     title: "Visit Us",
-    lines: ["San Pedro", "Ambergris Caye, Belize"],
+    lines: [ADDRESS_LINES[0], `${ADDRESS_LINES[1]}, ${ADDRESS_LINES[2]}`],
   },
   {
     icon: Phone,
     title: "Call Us",
-    lines: ["+501-000-0000", "Mon-Sat: 7am - 6pm"],
+    lines: [PHONE_DISPLAY, "Mon-Sat: 7am - 6pm"],
   },
-  {
-    icon: Mail,
-    title: "Email Us",
-    lines: ["office@twinly.eu", "We reply within 24 hours"],
-  },
+  ...(EMAIL ? [{ icon: Mail, title: "Email Us", lines: [EMAIL, "We reply within 24 hours"] }] : []),
   {
     icon: Clock,
     title: "Business Hours",

@@ -11,6 +11,7 @@ import { formatPrice } from "@/lib/utils";
 import Button from "@/components/ui/Button";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import { analytics } from "@/lib/analytics";
+import { PHONE_1, PHONE_2, EMAIL } from "@/data/contact";
 
 const checkoutSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -89,7 +90,7 @@ TOTAL: BZ$${totalPrice.toFixed(2)}
     setErrors({});
 
     const body = buildOrderText();
-    const mailtoLink = `mailto:office@twinly.eu?subject=${encodeURIComponent(`New Order from ${form.name}`)}&body=${encodeURIComponent(body)}`;
+    const mailtoLink = `mailto:${EMAIL}?subject=${encodeURIComponent(`New Order from ${form.name}`)}&body=${encodeURIComponent(body)}`;
 
     window.location.href = mailtoLink;
     setSubmitted(true);
@@ -254,11 +255,13 @@ TOTAL: BZ$${totalPrice.toFixed(2)}
                 </p>
                 <div className="flex items-center justify-center gap-2 text-tropical-teal font-body font-semibold">
                   <Phone size={16} />
-                  <span>+501-000-0000</span>
+                  <span>{PHONE_1} &nbsp;or&nbsp; {PHONE_2}</span>
                 </div>
-                <p className="text-drift-gray dark:text-dark-text-secondary text-xs font-body mt-1">
-                  office@twinly.eu
-                </p>
+                {EMAIL && (
+                  <p className="text-drift-gray dark:text-dark-text-secondary text-xs font-body mt-1">
+                    {EMAIL}
+                  </p>
+                )}
               </div>
 
               <div className="mt-8 text-center">

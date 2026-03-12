@@ -2,6 +2,7 @@
 
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import { Anchor, Users, Award, Clock } from "lucide-react";
+import { PHONE_DISPLAY } from "@/data/contact";
 
 const stats = [
   { icon: Clock, value: "20+", label: "Years Experience" },
@@ -46,6 +47,10 @@ export default function AboutSection() {
               Our team of experienced anglers and local fishing guides hand-select every rod, reel,
               and lure we stock. We don&apos;t just sell gear — we share decades of knowledge to help
               you make the most of your time on the water.
+            </p>
+
+            <p className="text-drift-gray dark:text-dark-text-secondary font-body text-sm mb-8">
+              Call us: {PHONE_DISPLAY}
             </p>
 
             {/* Stats */}

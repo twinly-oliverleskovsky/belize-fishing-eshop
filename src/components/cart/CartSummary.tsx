@@ -5,6 +5,7 @@ import { useCartStore } from "@/store/cartStore";
 import { formatPrice } from "@/lib/utils";
 import Button from "@/components/ui/Button";
 import { Phone } from "lucide-react";
+import { PHONE_1, PHONE_2 } from "@/data/contact";
 
 export default function CartSummary() {
   const totalPrice = useCartStore((s) => s.totalPrice());
@@ -47,7 +48,7 @@ export default function CartSummary() {
 
       <div className="mt-3 flex items-center justify-center gap-2 text-drift-gray dark:text-dark-text-secondary text-sm font-body">
         <Phone size={14} strokeWidth={1.5} />
-        <span>Questions? Call +501-000-0000</span>
+        <span>Questions? Call {PHONE_1} or {PHONE_2}</span>
       </div>
     </div>
   );

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Button from "@/components/ui/Button";
+import { PHONE_DISPLAY } from "@/data/contact";
 
 export default function HeroSection() {
   return (
@@ -62,12 +63,16 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.9 }}
+          className="flex flex-col sm:flex-row items-start sm:items-center gap-4"
         >
           <Link href="/shop">
             <Button size="lg" className="text-base">
               Explore Collection &rarr;
             </Button>
           </Link>
+          <span className="text-white/70 text-sm font-body">
+            Call: {PHONE_DISPLAY}
+          </span>
         </motion.div>
       </div>
     </section>

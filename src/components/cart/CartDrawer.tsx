@@ -9,6 +9,7 @@ import { useCartStore } from "@/store/cartStore";
 import { useUIStore } from "@/store/uiStore";
 import { formatPrice } from "@/lib/utils";
 import Button from "@/components/ui/Button";
+import { PHONE_DISPLAY } from "@/data/contact";
 
 export default function CartDrawer() {
   const items = useCartStore((s) => s.items);
@@ -255,6 +256,9 @@ export default function CartDrawer() {
                     Checkout &rarr;
                   </Button>
                 </Link>
+                <p className="text-drift-gray dark:text-dark-text-secondary text-xs font-body text-center pt-2">
+                  Call us: {PHONE_DISPLAY}
+                </p>
               </div>
             )}
           </motion.div>

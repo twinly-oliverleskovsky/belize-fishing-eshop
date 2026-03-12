@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { MapPin, Phone, Mail } from "lucide-react";
 import Image from "next/image";
+import { PHONE_DISPLAY, EMAIL, ADDRESS_LINES } from "@/data/contact";
 
 export default function Footer() {
   return (
@@ -78,18 +79,20 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin size={16} className="text-tropical-teal mt-0.5 shrink-0" strokeWidth={1.5} />
                 <span className="text-white/60 text-sm font-body">
-                  San Pedro,<br />
-                  Ambergris Caye, Belize
+                  {ADDRESS_LINES[0]},<br />
+                  {ADDRESS_LINES[1]}, {ADDRESS_LINES[2]}
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={16} className="text-tropical-teal shrink-0" strokeWidth={1.5} />
-                <span className="text-white/60 text-sm font-body">+501-000-0000</span>
+                <span className="text-white/60 text-sm font-body">{PHONE_DISPLAY}</span>
               </li>
-              <li className="flex items-center gap-3">
-                <Mail size={16} className="text-tropical-teal shrink-0" strokeWidth={1.5} />
-                <span className="text-white/60 text-sm font-body">office@twinly.eu</span>
-              </li>
+              {EMAIL && (
+                <li className="flex items-center gap-3">
+                  <Mail size={16} className="text-tropical-teal shrink-0" strokeWidth={1.5} />
+                  <span className="text-white/60 text-sm font-body">{EMAIL}</span>
+                </li>
+              )}
             </ul>
           </div>
         </div>
